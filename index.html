@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NPP Plan System — Спрощений індивідуальний план</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-icon"><i class="fas fa-university"></i></span>
+        <span class="logo-text">NPP Plan</span>
+      </div>
+      <div class="header-right">
+        <span class="progress-inline">Заповнено <strong id="progressCurrent">0</strong> / <strong id="progressTotal">1548</strong> год</span>
+        <label class="stavka-inline">Ставка: <input type="number" class="input-stavka" id="stavka" min="0.25" max="2" step="0.25" value="1" /></label>
+        <div class="profile">
+          <div class="profile-avatar"><i class="fas fa-user"></i></div>
+          <div class="profile-info">
+            <span class="profile-name">Юрій Кучма</span>
+            <span class="profile-role">Developer / Instructor</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="container">
+      <h1 class="page-title">Спрощений індивідуальний план НПП</h1>
+
+      <section class="card block-teaching">
+        <h2 class="card-title">Розділ 1. <i class="fas fa-chalkboard-teacher"></i> Навчальна робота <span class="card-title-meta" id="teachingMeta">(0 год / 0%)</span></h2>
+        <div class="teaching-table">
+          <div class="teaching-row header-row">
+            <span class="col-type">Вид роботи</span>
+            <span class="col-hours">Годин</span>
+          </div>
+          <div class="teaching-row">
+            <label class="col-type">Лекції</label>
+            <input type="number" class="input-hours col-hours" data-block="teaching" data-key="lectures" min="0" step="1" placeholder="0" value="200" />
+          </div>
+          <div class="teaching-row">
+            <label class="col-type">Практичні заняття</label>
+            <input type="number" class="input-hours col-hours" data-block="teaching" data-key="practical" min="0" step="1" placeholder="0" value="180" />
+          </div>
+          <div class="teaching-row">
+            <label class="col-type">Лабораторні заняття</label>
+            <input type="number" class="input-hours col-hours" data-block="teaching" data-key="lab" min="0" step="1" placeholder="0" value="120" />
+          </div>
+        </div>
+        <p class="section-total">Всього навантаження: <strong id="sectionTotalTeaching">0</strong> год</p>
+      </section>
+
+      <section class="card block-methodical">
+        <h2 class="card-title">Розділ 2. <i class="fas fa-book-open"></i> Методична робота <span class="card-title-meta" id="methodicalMeta">(0 год / 0%)</span></h2>
+        <div class="methodical-list" id="methodicalList">
+          <div class="methodical-row">
+            <input type="text" class="input-text methodical-name" placeholder="Назва роботи" value="Оновлення конспекту лекцій" />
+            <input type="number" class="input-hours methodical-hours" data-block="methodical" min="0" step="1" placeholder="год" value="60" />
+            <button type="button" class="btn-icon btn-remove" aria-label="Видалити"><i class="fas fa-times"></i></button>
+          </div>
+          <div class="methodical-row">
+            <input type="text" class="input-text methodical-name" placeholder="Назва роботи" value="Складання тестових завдань" />
+            <input type="number" class="input-hours methodical-hours" data-block="methodical" min="0" step="1" placeholder="год" value="50" />
+            <button type="button" class="btn-icon btn-remove" aria-label="Видалити"><i class="fas fa-times"></i></button>
+          </div>
+          <div class="methodical-row">
+            <input type="text" class="input-text methodical-name" placeholder="Назва роботи" value="Методичні вказівки до практикуму" />
+            <input type="number" class="input-hours methodical-hours" data-block="methodical" min="0" step="1" placeholder="год" value="50" />
+            <button type="button" class="btn-icon btn-remove" aria-label="Видалити"><i class="fas fa-times"></i></button>
+          </div>
+          <div class="methodical-row">
+            <input type="text" class="input-text methodical-name" placeholder="Назва роботи" value="Робочі програми дисциплін" />
+            <input type="number" class="input-hours methodical-hours" data-block="methodical" min="0" step="1" placeholder="год" value="80" />
+            <button type="button" class="btn-icon btn-remove" aria-label="Видалити"><i class="fas fa-times"></i></button>
+          </div>
+        </div>
+        <button type="button" class="btn-add-row" id="addMethodicalRow"><i class="fas fa-plus"></i> Додати рядок</button>
+        <p class="section-total">Всього навантаження: <strong id="sectionTotalMethodical">0</strong> год</p>
+      </section>
+
+      <section class="card block-scientific">
+        <h2 class="card-title">Розділ 3. <i class="fas fa-flask"></i> Наукова робота <span class="card-title-meta" id="scientificMeta">(0 год / 0%)</span></h2>
+        <div class="scientific-list" id="scientificList">
+          <div class="scientific-row">
+            <input type="text" class="input-text scientific-name" placeholder="Об'єкт наукової роботи" value="Стаття Scopus/Web of Science" />
+            <input type="number" class="input-hours scientific-hours" data-block="scientific" min="0" step="1" placeholder="год" value="300" />
+            <button type="button" class="btn-icon btn-remove" aria-label="Видалити"><i class="fas fa-times"></i></button>
+          </div>
+          <div class="scientific-row">
+            <input type="text" class="input-text scientific-name" placeholder="Об'єкт наукової роботи" value="Керування студ. науковою роботою" />
+            <input type="number" class="input-hours scientific-hours" data-block="scientific" min="0" step="1" placeholder="год" value="100" />
+            <button type="button" class="btn-icon btn-remove" aria-label="Видалити"><i class="fas fa-times"></i></button>
+          </div>
+          <div class="scientific-row">
+            <input type="text" class="input-text scientific-name" placeholder="Об'єкт наукової роботи" value="Доповідь на конференції" />
+            <input type="number" class="input-hours scientific-hours" data-block="scientific" min="0" step="1" placeholder="год" value="64" />
+            <button type="button" class="btn-icon btn-remove" aria-label="Видалити"><i class="fas fa-times"></i></button>
+          </div>
+        </div>
+        <button type="button" class="btn-add-row" id="addScientificRow"><i class="fas fa-plus"></i> Додати рядок</button>
+        <p class="section-total">Всього навантаження: <strong id="sectionTotalScientific">0</strong> год</p>
+      </section>
+
+      <section class="card block-organizational">
+        <h2 class="card-title">Розділ 4. <i class="fas fa-users-cog"></i> Організаційна робота <span class="card-title-meta" id="organizationalMeta">(0 год / 0%)</span></h2>
+        <div class="organizational-list" id="organizationalList">
+          <div class="organizational-row">
+            <input type="text" class="input-text org-activity" placeholder="Активність" value="Робота у Вченій раді" />
+            <input type="number" class="input-hours org-hours" data-block="organizational" min="0" step="1" placeholder="год" value="70" />
+            <button type="button" class="btn-icon btn-remove" aria-label="Видалити"><i class="fas fa-times"></i></button>
+          </div>
+          <div class="organizational-row">
+            <input type="text" class="input-text org-activity" placeholder="Активність" value="Профорієнтаційна робота" />
+            <input type="number" class="input-hours org-hours" data-block="organizational" min="0" step="1" placeholder="год" value="80" />
+            <button type="button" class="btn-icon btn-remove" aria-label="Видалити"><i class="fas fa-times"></i></button>
+          </div>
+          <div class="organizational-row">
+            <input type="text" class="input-text org-activity" placeholder="Активність" value="Методичні семінари" />
+            <input type="number" class="input-hours org-hours" data-block="organizational" min="0" step="1" placeholder="год" value="76" />
+            <button type="button" class="btn-icon btn-remove" aria-label="Видалити"><i class="fas fa-times"></i></button>
+          </div>
+          <div class="organizational-row">
+            <input type="text" class="input-text org-activity" placeholder="Активність" value="Засідання кафедри, комісії" />
+            <input type="number" class="input-hours org-hours" data-block="organizational" min="0" step="1" placeholder="год" value="70" />
+            <button type="button" class="btn-icon btn-remove" aria-label="Видалити"><i class="fas fa-times"></i></button>
+          </div>
+        </div>
+        <button type="button" class="btn-add-row" id="addOrganizationalRow"><i class="fas fa-plus"></i> Додати рядок</button>
+        <p class="section-total">Всього навантаження: <strong id="sectionTotalOrganizational">0</strong> год</p>
+      </section>
+
+      <!-- Підсумок: по семестрах, звіти, висновок -->
+      <section class="card card-summary">
+        <h2 class="card-title">Розділ 5. <i class="fas fa-calculator"></i> Підсумок <span class="card-title-meta">(<span id="sumTotal">0</span> год)</span></h2>
+
+        <div class="summary-by-type">
+          <div class="summary-row"><span>Навчальна</span><span class="summary-value" id="sumTeaching">0</span> год</div>
+          <div class="summary-row"><span>Методична</span><span class="summary-value" id="sumMethodical">0</span> год</div>
+          <div class="summary-row"><span>Наукова</span><span class="summary-value" id="sumScientific">0</span> год</div>
+          <div class="summary-row"><span>Організаційна</span><span class="summary-value" id="sumOrganizational">0</span> год</div>
+        </div>
+
+        <h3 class="subsection-title">Звіти по семестрах</h3>
+        <div class="reports-grid">
+          <div class="report-sem">
+            <h4 class="report-sem-title">1 семестр</h4>
+            <p class="report-sem-line">Навчання <input type="number" class="input-pct" id="r1Navch" min="0" max="100" placeholder="%" value="85" /> % &nbsp; Наука <input type="number" class="input-pct" id="r1Nauka" min="0" max="100" placeholder="%" value="90" /> % &nbsp; Методика <input type="number" class="input-pct" id="r1Metod" min="0" max="100" placeholder="%" value="75" /> %</p>
+          </div>
+          <div class="report-sem">
+            <h4 class="report-sem-title">2 семестр</h4>
+            <p class="report-sem-line">Навчання <input type="number" class="input-pct" id="r2Navch" min="0" max="100" placeholder="%" value="80" /> % &nbsp; Наука <input type="number" class="input-pct" id="r2Nauka" min="0" max="100" placeholder="%" value="95" /> % &nbsp; Методика <input type="number" class="input-pct" id="r2Metod" min="0" max="100" placeholder="%" value="70" /> %</p>
+          </div>
+        </div>
+
+        <div class="conclusion-block">
+          <label class="conclusion-label">Висновок завідувача</label>
+          <textarea class="input-textarea" id="conclusion" rows="3" placeholder="Висновок завідувача кафедри">План виконано у повному обсязі. Рекомендую до затвердження.</textarea>
+        </div>
+
+        <div class="summary-actions">
+          <button type="button" class="btn btn-outline" id="btnSaveDraft">Зберегти чернетку</button>
+          <button type="button" class="btn btn-primary" id="btnSubmit">Відправити на перевірку</button>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
