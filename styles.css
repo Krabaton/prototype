@@ -161,9 +161,34 @@ body {
   font-size: 2rem;
   font-weight: 800;
   color: var(--text);
-  margin: 0 0 32px;
+  margin: 0 0 8px;
   letter-spacing: -0.03em;
   line-height: 1.2;
+}
+
+.page-subtitle {
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin: 0 0 28px;
+}
+
+.select-year {
+  width: 10em;
+  min-width: 140px;
+  padding: 8px 12px;
+  font-size: 1rem;
+  font-family: inherit;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-left: 8px;
+  background: var(--bg-card);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.select-year:focus {
+  outline: none;
+  border-color: var(--accent);
 }
 
 .card {
